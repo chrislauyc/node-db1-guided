@@ -26,12 +26,12 @@ async function create({ title, contents }) { // specified in the readme
 }
 
 function update(id, { title, contents }) {
-  db('posts').where('id', id).update({ title, contents })
+  return db('posts').where('id', id).update({ title, contents })
     .then(() => {
       return getById(id)
     })
 }
 
-async function remove() {
-  return 'delete wired'
+async function remove(id) {
+  
 }
