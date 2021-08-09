@@ -21,10 +21,8 @@ async function getById(id) {
 
 async function create({ title, contents }) {
   const [id] = await db('posts').insert({ title, contents }) // [67] the id of the new rec
-  console.log(id)
-  const theGoodStuff = await getById(id)
-  console.log(theGoodStuff)
-  return 'gaga'
+  const newPost = await getById(id)
+  return newPost
 }
 
 async function update(id, { title, contents }) {
