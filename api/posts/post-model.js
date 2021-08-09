@@ -20,7 +20,7 @@ async function getById(id) {
 }
 
 async function create({ title, contents }) {
-  return 'create wired'
+  return db('posts').insert({ title, contents }, ['id']) // [{ id: 6}]
 }
 
 async function update(id, { title, contents }) {
