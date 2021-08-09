@@ -22,7 +22,7 @@ async function create() {
   return 'create wired'
 }
 
-async function update() {
+async function update(id, { title, contents }) {
   return 'update wired'
 }
 
