@@ -15,7 +15,7 @@ async function get() {
 
 async function getById(id) {
   // return db('posts').where({ id: id, foo: 'bar' }).first()
-  // WITHOUT .first() 
+  // WITHOUT .first() WE ALWAYS GET AN ARRAY WHICH COULD BE []
   return db('posts').where('id', id).first()
 }
 
