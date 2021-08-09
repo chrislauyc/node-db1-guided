@@ -19,7 +19,7 @@ async function getById(id) {
   return db('posts').where('id', id).first()
 }
 
-async function create({ title, contents }) {
+async function create({ title, contents }) { // specified in the readme
   const [id] = await db('posts').insert({ title, contents }) // [67] the id of the new rec
   const newPost = await getById(id)
   return newPost
