@@ -32,7 +32,7 @@ function update(id, { title, contents }) {
     })
 }
 
-async function remove(id) { // README 
+async function remove(id) { // README
   // what does it return?
   // what to do to give back the deleted thing???
   return db('posts').where('id', id).del()
