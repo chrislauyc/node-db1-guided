@@ -19,7 +19,7 @@ async function getById(id) {
   return db('posts').where('id', id).first()
 }
 
-async function create() {
+async function create({ title, contents }) {
   return 'create wired'
 }
 
