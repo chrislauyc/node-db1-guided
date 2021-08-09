@@ -26,7 +26,7 @@ async function create({ title, contents }) { // specified in the readme
 }
 
 async function update(id, { title, contents }) {
-  return 'update wired'
+  const stuff = await db('posts').where('id', id).update({ title, contents })
 }
 
 async function remove() {
