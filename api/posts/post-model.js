@@ -13,8 +13,8 @@ async function get() {
   return db('posts')
 }
 
-async function getById() {
-  return 'getById wired'
+async function getById(id) {
+  return db('posts').where({ id: id })
 }
 
 async function create() {
