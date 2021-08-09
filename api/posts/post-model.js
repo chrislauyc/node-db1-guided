@@ -20,7 +20,7 @@ async function getById(id) {
 }
 
 async function create({ title, contents }) {
-  return db('posts').insert({ title, contents }, ['id']) // [{ id: 6}]
+  return db('posts').insert({ title, contents }) // [67] the id of the new rec
 }
 
 async function update(id, { title, contents }) {
