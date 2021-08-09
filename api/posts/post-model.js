@@ -15,7 +15,7 @@ async function get() {
 
 async function getById(id) {
   // return db('posts').where({ id: id, foo: 'bar' })
-  return db('posts').where('id', id)
+  return db('posts').where('id', id).first()
 }
 
 async function create() {
