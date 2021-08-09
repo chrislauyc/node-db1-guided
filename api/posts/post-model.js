@@ -24,6 +24,7 @@ async function create({ title, contents }) {
   console.log(id)
   const theGoodStuff = await getById(id)
   console.log(theGoodStuff)
+  return 'gaga'
 }
 
 async function update(id, { title, contents }) {
