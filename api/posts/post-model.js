@@ -8,12 +8,12 @@ module.exports = {
   remove,
 }
 
-async function get() {
+function get() {
   // select * from posts;
   return db('posts')
 }
 
-async function getById(id) {
+function getById(id) {
   // return db('posts').where({ id: id, foo: 'bar' }).first()
   // WITHOUT .first() WE ALWAYS GET AN ARRAY WHICH COULD BE []
   return db('posts').where('id', id).first()
@@ -25,10 +25,11 @@ async function create({ title, contents }) { // specified in the readme
   return newPost
 }
 
-async function update(id, { title, contents }) {
-  const stuff = await db('posts').where('id', id).update({ title, contents })
-  console.log(stuff)
-  return stuff
+function update(id, { title, contents }) {
+  db('posts').where('id', id).update({ title, contents })
+    .then(() => {
+      return getById(id)
+    })
 }
 
 async function remove() {
