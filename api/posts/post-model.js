@@ -9,7 +9,8 @@ module.exports = {
 }
 
 async function get() {
-  return 'get wired'
+  // select * from posts;
+  return db('posts')
 }
 
 async function getById() {
