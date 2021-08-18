@@ -3,12 +3,35 @@ const Post = require('./post-model')
 
 const router = express.Router()
 
-function checkId(req, res, next) {
-  next()
+async function checkId(req, res, next) {
+  try{
+    const post = await Post.getById(req.params.id);
+    if(post){
+      req.post = post;
+      next();
+    }
+    else{
+      res.status(404).json({message:"post not found"});
+    }
+  }
+  catch(err){
+    next(err);
+  }
 }
 
 function checkPayload(req, res, next) {
-  next()
+  try{
+    const {title, contents} = req.body;
+    if(title&&contents){
+      next();
+    }
+    else{
+      res.status(400).json({message:"need title or contents"});
+    }
+  }
+  catch(err){
+    next(err);
+  }
 }
 
 router.get('/', async (req, res, next) => {

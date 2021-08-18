@@ -1,3 +1,4 @@
+const db = require("../../data/db-config");
 module.exports = {
   get,
   getById,
@@ -7,21 +8,25 @@ module.exports = {
 }
 
 async function get() {
-  return 'get wired'
+  return db("post");
 }
 
-async function getById() {
-  return 'getById wired'
+async function getById(id) {
+  return db("post").where({id}).first();
 }
 
-async function create() {
-  return 'create wired'
+async function create({title,contents}) {
+  const [id] = await db("post").insert({title,contents});
+  return getById(id);
 }
 
-async function update() {
-  return 'update wired'
+async function update(id,{title,contents}) {
+  await db("post").where({id}).update({title,contents});
+  return getById(id);
 }
 
-async function remove() {
-  return 'delete wired'
+async function remove(id) {
+  const post = await getById(id);
+  await db("post").where({id}).delete(id);
+  return post;
 }
